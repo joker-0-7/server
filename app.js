@@ -9,7 +9,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productRouter = require("./routes/product");
 const cors = require("cors");
-mongoose.connect("mongodb://localhost:27017").then(() => {
+mongoose.connect(`${process.env.DATABASE_URL}`).then(() => {
   console.log("SUCCESS TO CONNECT DATABASE");
 });
 var app = express();
