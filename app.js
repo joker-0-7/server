@@ -23,12 +23,15 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, "public/images")));
+app.use(express.static(path.join(__dirname, "public/images")));
 
 app.use("/api/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/product", productRouter);
-app.use("/uploads", express.static(path.join(__dirname, "public/images")));
+app.use(
+  "/public/images",
+  express.static(path.join(__dirname, "public/images"))
+);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -38,7 +41,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   return res
     .status(err.statusCode || 400)
-    .json({ status: "ERghfhROR", msg: err.msg });
+    .json({ status: "ERROR", msg: err.msg });
   console.log(err);
 });
 

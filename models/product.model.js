@@ -18,6 +18,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    imgsUrl: {
+      type: Array,
+      required: true,
+    },
   },
   { timestamps: true }
 );
